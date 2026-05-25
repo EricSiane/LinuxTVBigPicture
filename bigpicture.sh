@@ -4,8 +4,8 @@
 #  For: CachyOS · KDE Plasma (Wayland) · PipeWire
 # =============================================================================
 
-TV_OUTPUT=""
-TV_SINK=""
+TV_OUTPUT="HDMI-A-1"
+TV_SINK="alsa_output.pci-0000_03_00.1.hdmi-stereo-extra3"
 LAYOUT_FILE="${XDG_RUNTIME_DIR:-/tmp}/bigpicture_layout"
 STEAM_LOG="$HOME/.local/share/Steam/logs/gameprocess_log.txt"
 
@@ -86,11 +86,17 @@ restore_layout() {
     [[ ! -f "$LAYOUT_FILE" ]] && { log "No layout file found!"; return 1; }
     local args=()
     while IFS= read -r cmd; do
-        [[ -n "$cmd" ]] && args+=("$cmd")
+        [[ -z "$cmd" ]] && continue
+        # Drop any saved commands for the TV — it always goes OFF on restore,
+        # so we ignore its saved enable/mode/position/scale lines here.
+        [[ "$cmd" == "output.$TV_OUTPUT".* ]] && continue
+        args+=("$cmd")
     done < "$LAYOUT_FILE"
-    log "Restoring monitors: ${args[*]}"
+    # Always disable the TV when returning to the desktop.
+    args+=("output.$TV_OUTPUT.disable")
+    log "Restoring monitors (TV forced off): ${args[*]}"
     kscreen-doctor "${args[@]}" 2>/dev/null \
-        && log "Monitors restored." \
+        && log "Monitors restored, TV disabled." \
         || log "WARNING: monitor restore had errors."
 }
 
