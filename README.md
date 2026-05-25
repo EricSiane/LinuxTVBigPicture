@@ -91,7 +91,7 @@ cat > ~/.local/share/applications/bigpicture.desktop << 'EOF'
 [Desktop Entry]
 Name=Big Picture Mode
 Comment=Switch to TV and launch Steam Big Picture
-Exec=/home/YOUR_USERNAME/bigpicture.sh
+Exec=path/to/file/bigpicture.sh
 Icon=steam
 Terminal=true
 Type=Application
