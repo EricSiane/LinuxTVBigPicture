@@ -93,7 +93,7 @@ Name=Big Picture Mode
 Comment=Switch to TV and launch Steam Big Picture
 Exec=/home/YOUR_USERNAME/bigpicture.sh
 Icon=steam
-Terminal=false
+Terminal=true
 Type=Application
 Categories=Game;
 EOF
