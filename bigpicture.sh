@@ -4,8 +4,8 @@
 #  For: CachyOS · KDE Plasma (Wayland) · PipeWire
 # =============================================================================
 
-TV_OUTPUT="HDMI-A-1"
-TV_SINK="alsa_output.pci-0000_03_00.1.hdmi-stereo-extra3"
+TV_OUTPUT=""
+TV_SINK=""
 LAYOUT_FILE="${XDG_RUNTIME_DIR:-/tmp}/bigpicture_layout"
 STEAM_LOG="$HOME/.local/share/Steam/logs/gameprocess_log.txt"
 
