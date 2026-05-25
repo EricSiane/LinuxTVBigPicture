@@ -99,7 +99,7 @@ Categories=Game;
 EOF
 ```
 
-Replace `YOUR_USERNAME` with your actual username. The shortcut will appear in your app launcher and can be pinned to the taskbar.
+The shortcut will appear in your app launcher and can be pinned to the taskbar.
 
 ---
 
